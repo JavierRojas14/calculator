@@ -32,3 +32,17 @@ function operate(operator, firstNumber, secondNumber) {
     }
 
 }
+
+function bindButtons (){
+    const allButtons = document.querySelectorAll('button');
+    Array.from(allButtons, (element) => element.addEventListener('click', sendValueToDisplay));
+}
+
+function sendValueToDisplay(event) {
+    let buttonPressed = event.target;
+    let visorElement = document.querySelector('.results-visor');
+    visorElement.textContent += buttonPressed.textContent;
+
+}
+
+bindButtons();
