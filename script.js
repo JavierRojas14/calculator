@@ -33,10 +33,26 @@ function operate(operator, firstNumber, secondNumber) {
 
 }
 
-function bindButtons (){
+function bindButtons() {
     const allButtons = document.querySelectorAll('button');
-    Array.from(allButtons, (element) => element.addEventListener('click', sendValueToDisplay));
+    Array.from(allButtons, (element) => element.addEventListener('click', evaluateActionOfButton));
 }
+
+
+function evaluateActionOfButton(event) {
+    let buttonPressed = event.target;
+    let characterOfButton = buttonPressed.textContent;
+
+    if (characterOfButton === 'AC') {
+        deleteContentOfVisor();
+    }
+}
+
+function deleteContentOfVisor() {
+    let visorElement = document.querySelector('.results-visor');
+    visorElement.textContent = '';
+}
+
 
 function sendValueToDisplay(event) {
     let buttonPressed = event.target;
