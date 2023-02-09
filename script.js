@@ -45,6 +45,8 @@ function evaluateActionOfButton(event) {
 
     if (characterOfButton === 'AC') {
         deleteContentOfVisor();
+    } else if (characterOfButton === '=') {
+        alert('Hay que hacer una operacion!');
     }
 }
 
