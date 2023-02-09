@@ -47,6 +47,10 @@ function evaluateActionOfButton(event) {
         deleteContentOfVisor();
     } else if (characterOfButton === '=') {
         alert('Hay que hacer una operacion!');
+    } else if (characterOfButton === '?') {
+        //pass
+    } else {
+        sendValueToDisplay(characterOfButton);
     }
 }
 
@@ -56,11 +60,9 @@ function deleteContentOfVisor() {
 }
 
 
-function sendValueToDisplay(event) {
-    let buttonPressed = event.target;
+function sendValueToDisplay(characterOfButton) {
     let visorElement = document.querySelector('.results-visor');
-    visorElement.textContent += buttonPressed.textContent;
-
+    visorElement.textContent += characterOfButton;
 }
 
 bindButtons();
