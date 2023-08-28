@@ -1,3 +1,5 @@
+import { getOperation } from "./evaluate-operators";
+
 const OPERATORS = ["/", "X", "-", "+"];
 
 function add(firstNumber, secondNumber) {
@@ -35,8 +37,6 @@ function deleteContentOfVisor() {
   visorElement.textContent = "";
 }
 
-function evaluateValidInputToOperate() {}
-
 function sendValueToDisplay(characterOfButton) {
   let visorElement = document.querySelector(".results-visor");
   let charactersToNotDoAnything = OPERATORS.concat(["."]);
@@ -56,6 +56,7 @@ function sendValueToDisplay(characterOfButton) {
 function checkValidOperateExpression() {
   let visorElement = document.querySelector(".results-visor");
   let textOfVisor = visorElement.textContent;
+  let operationToDo = 
 
   if (textOfVisor.includes("+")) {
     let separatedOperation = textOfVisor.split();
