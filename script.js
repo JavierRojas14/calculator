@@ -1,4 +1,4 @@
-import { getOperation } from "./evaluate-operators";
+import { getOperation } from "./evaluate-operators.js";
 
 const OPERATORS = ["/", "X", "-", "+"];
 
@@ -19,17 +19,18 @@ function divide(firstNumber, secondNumber) {
 }
 
 function operate(operator, firstNumber, secondNumber) {
+  let result = "";
   if (operator === "+") {
-    add(firstNumber, secondNumber);
+    result = add(firstNumber, secondNumber);
   } else if (operator === "-") {
-    subtract(firstNumber, secondNumber);
-  } else if (operator === "*") {
-    multiply(firstNumber, secondNumber);
+    result = subtract(firstNumber, secondNumber);
+  } else if (operator === "X") {
+    result = multiply(firstNumber, secondNumber);
   } else if (operator === "/") {
-    divide(firstNumber, secondNumber);
-  } else {
-    return "You must enter a valid operator";
+    result = divide(firstNumber, secondNumber);
   }
+
+  return result;
 }
 
 function deleteContentOfVisor() {
@@ -56,12 +57,21 @@ function sendValueToDisplay(characterOfButton) {
 function checkValidOperateExpression() {
   let visorElement = document.querySelector(".results-visor");
   let textOfVisor = visorElement.textContent;
-  let operationToDo = 
+  let operationToDo = getOperation(textOfVisor);
 
-  if (textOfVisor.includes("+")) {
-    let separatedOperation = textOfVisor.split();
-  } else if (textOfVisor.includes("-")) {
-    //pass
+  if (operationToDo) {
+    let splitOperation = textOfVisor.split(operationToDo);
+    let lastElement = splitOperation[1];
+
+    // If the last element is not null (Has 2 elements to operate). Then operate
+    if (lastElement) {
+      const result = operate(
+        operationToDo,
+        Number(splitOperation[0]),
+        Number(splitOperation[1])
+      );
+      visorElement.textContent = result;
+    }
   }
 }
 
