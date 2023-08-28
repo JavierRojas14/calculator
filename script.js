@@ -1,3 +1,5 @@
+const OPERATORS = ["/", "X", "-", "+"];
+
 function add(firstNumber, secondNumber) {
   return firstNumber + secondNumber;
 }
@@ -37,13 +39,13 @@ function evaluateValidInputToOperate() {}
 
 function sendValueToDisplay(characterOfButton) {
   let visorElement = document.querySelector(".results-visor");
-  let operators = ["/", "X", "-", "+", "."];
+  let charactersToNotDoAnything = OPERATORS.concat(["."]);
 
   // This if only happens if the visor is empty, and the user clicks an operator.
   // In that case, the operator mustn't be added to the visor
   if (
     visorElement.textContent === "" &&
-    operators.indexOf(characterOfButton) != -1
+    charactersToNotDoAnything.indexOf(characterOfButton) != -1
   ) {
     // pass
   } else {
@@ -58,7 +60,7 @@ function evaluateActionOfButton(event) {
   if (characterOfButton === "AC") {
     deleteContentOfVisor();
   } else if (characterOfButton === "=") {
-    alert("Hay que hacer una operacion!");
+    checkOperatorExpression();
   } else if (characterOfButton === "?") {
     //pass
   } else {
