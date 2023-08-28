@@ -37,7 +37,7 @@ function evaluateValidInputToOperate() {}
 
 function sendValueToDisplay(characterOfButton) {
   let visorElement = document.querySelector(".results-visor");
-  let operators = ["/", "X", "-", "+"];
+  let operators = ["/", "X", "-", "+", "."];
 
   // This if only happens if the visor is empty, and the user clicks an operator.
   // In that case, the operator mustn't be added to the visor
