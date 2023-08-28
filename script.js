@@ -53,6 +53,17 @@ function sendValueToDisplay(characterOfButton) {
   }
 }
 
+function checkValidOperateExpression() {
+  let visorElement = document.querySelector(".results-visor");
+  let textOfVisor = visorElement.textContent;
+
+  if (textOfVisor.includes("+")) {
+    let separatedOperation = textOfVisor.split();
+  } else if (textOfVisor.includes("-")) {
+    //pass
+  }
+}
+
 function evaluateActionOfButton(event) {
   let buttonPressed = event.target;
   let characterOfButton = buttonPressed.textContent;
@@ -60,7 +71,7 @@ function evaluateActionOfButton(event) {
   if (characterOfButton === "AC") {
     deleteContentOfVisor();
   } else if (characterOfButton === "=") {
-    checkOperatorExpression();
+    checkValidOperateExpression();
   } else if (characterOfButton === "?") {
     //pass
   } else {
