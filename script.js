@@ -79,12 +79,23 @@ function evaluateActionOfButton(event) {
   let buttonPressed = event.target;
   let characterOfButton = buttonPressed.textContent;
 
+  let visorElement = document.querySelector(".results-visor");
+  let textOfVisor = visorElement.textContent;
+
   if (characterOfButton === "AC") {
     deleteContentOfVisor();
   } else if (characterOfButton === "=") {
     checkValidOperateExpression();
   } else if (characterOfButton === "?") {
     //pass
+  } else if (OPERATORS.includes(characterOfButton)) {
+    let operator = getOperation(textOfVisor);
+    if (operator) {
+      checkValidOperateExpression();
+      visorElement.textContent += operator;
+    } else {
+      sendValueToDisplay(characterOfButton);
+    }
   } else {
     sendValueToDisplay(characterOfButton);
   }
