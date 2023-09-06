@@ -54,6 +54,29 @@ function sendValueToDisplay(characterOfButton) {
   }
 }
 
+function retrieveElementsOfOperation() {
+  let elementsOfOperation = [];
+  let textOfVisor = document.querySelector(".results-visor").textContent;
+  let operationToDo = getOperation(textOfVisor);
+
+  elementsOfOperation.push(operationToDo);
+
+  // If it is an operation with at least one symbol. If it has a symbol, then it has at least the
+  // first digi
+  if (operationToDo) {
+    let splitOperation = textOfVisor.split(operationToDo);
+    let firstNumber = splitOperation[0];
+    let secondNumber = splitOperation[1];
+
+    elementsOfOperation.push(firstNumber);
+    elementsOfOperation.push(secondNumber);
+  } else {
+    elementsOfOperation.push(textOfVisor);
+  }
+
+  return elementsOfOperation;
+}
+
 function checkValidOperateExpression() {
   let visorElement = document.querySelector(".results-visor");
   let textOfVisor = visorElement.textContent;
