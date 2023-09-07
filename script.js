@@ -38,28 +38,12 @@ function deleteContentOfVisor() {
   visorElement.textContent = "";
 }
 
-function sendValueToDisplay(characterOfButton) {
-  let visorElement = document.querySelector(".results-visor");
-  let charactersToNotDoAnything = OPERATORS.concat(["."]);
-
-  // This if only happens if the visor is empty, and the user clicks an operator.
-  // In that case, the operator mustn't be added to the visor
-  if (
-    visorElement.textContent === "" &&
-    charactersToNotDoAnything.indexOf(characterOfButton) != -1
-  ) {
-    // pass
-  } else {
-    visorElement.textContent += characterOfButton;
-  }
-}
-
-function retrieveElementsOfOperation() {
-  let elementsOfOperation = [];
+function retrieveElementsOfCurrentOperation() {
+  let elementsOfOperation = [null, null, null];
   let textOfVisor = document.querySelector(".results-visor").textContent;
   let operationToDo = getOperation(textOfVisor);
 
-  elementsOfOperation.push(operationToDo);
+  elementsOfOperation[0] = operationToDo;
 
   // If it is an operation with at least one symbol. If it has a symbol, then it has at least the
   // first digi
@@ -68,56 +52,63 @@ function retrieveElementsOfOperation() {
     let firstNumber = splitOperation[0];
     let secondNumber = splitOperation[1];
 
-    elementsOfOperation.push(firstNumber);
-    elementsOfOperation.push(secondNumber);
+    elementsOfOperation[1] = firstNumber;
+    elementsOfOperation[2] = secondNumber;
   } else {
-    elementsOfOperation.push(textOfVisor);
+    if (textOfVisor) {
+      elementsOfOperation[1] = textOfVisor;
+    }
   }
 
   return elementsOfOperation;
 }
 
-function checkValidOperateExpression() {
-  let visorElement = document.querySelector(".results-visor");
-  let textOfVisor = visorElement.textContent;
-  let operationToDo = getOperation(textOfVisor);
+function sendValueToDisplay(characterOfButton) {
+  document.querySelector(".results-visor").textContent += characterOfButton;
+  // let currentElementsInVisor = retrieveElementsOfCurrentOperation();
+  // let operation = currentElementsInVisor[0];
+  // let firstNumber = currentElementsInVisor[1];
+  // let secondNumber = currentElementsInVisor[2];
 
-  if (operationToDo) {
-    let splitOperation = textOfVisor.split(operationToDo);
-    let lastElement = splitOperation[1];
-
-    // If the last element is not null (Has 2 elements to operate). Then operate
-    if (lastElement) {
-      const result = operate(
-        operationToDo,
-        Number(splitOperation[0]),
-        Number(splitOperation[1])
-      );
-      visorElement.textContent = result;
-    }
-  }
+  // // If the visor is empty, and the button pressed is an operator, then don't send.
+  // console.log(operation, firstNumber, secondNumber);
+  // if (
+  //   operation === null &&
+  //   firstNumber === null &&
+  //   secondNumber === null &&
+  //   OPERATORS.includes(characterOfButton)
+  // ) {
+  //   //pass
+  // } else if (operation && OPERATORS.includes(characterOfButton)) {
+  //   //pass
+  // } else {
+  //   document.querySelector(".results-visor").textContent += characterOfButton;
+  // }
 }
 
 function evaluateActionOfButton(event) {
-  let buttonPressed = event.target;
-  let characterOfButton = buttonPressed.textContent;
+  let characterOfButton = event.target.textContent;
 
-  let visorElement = document.querySelector(".results-visor");
-  let textOfVisor = visorElement.textContent;
+  let currentElementsInVisor = retrieveElementsOfCurrentOperation();
+  let operation = currentElementsInVisor[0];
+  let firstNumber = currentElementsInVisor[1];
+  let secondNumber = currentElementsInVisor[2];
 
   if (characterOfButton === "AC") {
     deleteContentOfVisor();
-  } else if (characterOfButton === "=") {
-    checkValidOperateExpression();
   } else if (characterOfButton === "?") {
-    //pass
+    // pass
   } else if (OPERATORS.includes(characterOfButton)) {
-    let operator = getOperation(textOfVisor);
-    if (operator) {
-      checkValidOperateExpression();
-      visorElement.textContent += operator;
-    } else {
+    if (operation === null && firstNumber && secondNumber === null) {
       sendValueToDisplay(characterOfButton);
+    } else if (operation && firstNumber && secondNumber) {
+      result = operate(operation, firstNumber, secondNumber);
+      sendValueToDisplay(result);
+    }
+  } else if (characterOfButton === "=") {
+    if (operation && firstNumber && secondNumber) {
+      result = operate(operation, firstNumber, secondNumber);
+      sendValueToDisplay(result);
     }
   } else {
     sendValueToDisplay(characterOfButton);
