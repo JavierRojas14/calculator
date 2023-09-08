@@ -4,13 +4,6 @@ html {
   color: white;
 }
 
-.results-visor {
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  font-size: 30px;
-}
-
 .calculator {
   display: flex;
   flex-direction: column;
@@ -18,14 +11,22 @@ html {
   background-color: black;
 }
 
+.results-visor {
+  text-align: right;
+  font-size: 30px;
+  background-color: gray;
+  height: 40px;
+  width: 50%;
+}
+
 .key-pad {
   display: flex;
   flex-direction: column;
   gap: 10px;
   background-color: rgb(51, 51, 51);
-  margin: auto;
+  width: 50%;
   align-items: center;
-  padding: 13px;
+  padding: 13px 0px;
   border-radius: 15px;
 }
 
