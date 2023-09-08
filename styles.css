@@ -37,3 +37,23 @@ button {
     color: white;
     font-weight: bold;
 }
+
+.division-button {
+    background-color: gray;
+}
+
+.multiply-button {
+    background-color: gray;
+}
+
+.sum-button {
+    background-color: gray;
+}
+
+.subtract-button {
+    background-color: gray;
+}
+
+.equals-button {
+    background-color: orange;
+}
