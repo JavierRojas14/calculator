@@ -34,11 +34,6 @@ function operate(operator, firstNumber, secondNumber) {
   return result;
 }
 
-function deleteContentOfVisor() {
-  let visorElement = document.querySelector(".results-visor");
-  visorElement.textContent = "";
-}
-
 function retrieveElementsOfCurrentOperation() {
   let elementsOfOperation = [null, null, null];
   let textOfVisor = document.querySelector(".results-visor").textContent;
@@ -68,14 +63,7 @@ function addValueToDisplay(characterOfButton) {
   document.querySelector(".results-visor").textContent += characterOfButton;
 }
 
-function changeCurrentOperator(operator) {
-  console.log(`Estoy aca ${operator}`);
-  let currentExpressionInVisor = document.querySelector(".results-visor").textContent;
-  let changedExpression = currentExpressionInVisor.slice(0, -1) + operator;
-  document.querySelector(".results-visor").textContent = changedExpression;
-}
-
-function sendResultToDisplay(result) {
+function setValueInDisplay(result) {
   document.querySelector(".results-visor").textContent = result;
 }
 
@@ -85,6 +73,18 @@ function deleteOneCharacterOfVisor() {
     let minusOneCharacter = currentExpressionInVisor.slice(0, -1);
     document.querySelector(".results-visor").textContent = minusOneCharacter;
   }
+}
+
+function deleteContentOfVisor() {
+  let visorElement = document.querySelector(".results-visor");
+  visorElement.textContent = "";
+}
+
+function changeCurrentOperator(operator) {
+  console.log(`Estoy aca ${operator}`);
+  let currentExpressionInVisor = document.querySelector(".results-visor").textContent;
+  let changedExpression = currentExpressionInVisor.slice(0, -1) + operator;
+  document.querySelector(".results-visor").textContent = changedExpression;
 }
 
 function evaluateActionOfButton(event) {
@@ -109,10 +109,10 @@ function evaluateActionOfButton(event) {
     else if (operator && firstNumber && secondNumber) {
       if (operator === "/" && Number(secondNumber) === 0) {
         alert("Sneaky sneaky!! You're trying to divide by 0, and that is forbidden!");
-        sendResultToDisplay(firstNumber);
+        setValueInDisplay(firstNumber);
       } else {
         let result = operate(operator, Number(firstNumber), Number(secondNumber));
-        sendResultToDisplay(result);
+        setValueInDisplay(result);
         addValueToDisplay(characterOfButton);
       }
     }
@@ -120,10 +120,10 @@ function evaluateActionOfButton(event) {
     if (operator && firstNumber && secondNumber) {
       if (operator === "/" && Number(secondNumber) === 0) {
         alert("Sneaky sneaky!! You're trying to divide by 0, and that is forbidden!");
-        sendResultToDisplay(firstNumber);
+        setValueInDisplay(firstNumber);
       } else {
         let result = operate(operator, Number(firstNumber), Number(secondNumber));
-        sendResultToDisplay(result);
+        setValueInDisplay(result);
       }
     }
   } else if (characterOfButton === "<=") {
