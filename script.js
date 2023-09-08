@@ -116,12 +116,13 @@ function evaluateActionOfButton(event) {
         } else if (operator && firstNumber && !secondNumber) {
             changeCurrentOperator(characterOfButton);
         } else if (operator && firstNumber && secondNumber) {
-            result = operate(operator, Number(firstNumber), Number(secondNumber));
-            sendValueToDisplay(result);
+            let result = operate(operator, Number(firstNumber), Number(secondNumber));
+            sendResultToDisplay(result);
+            sendValueToDisplay(characterOfButton);
         }
     } else if (characterOfButton === "=") {
         if (operator && firstNumber && secondNumber) {
-            let result = operate(operator, firstNumber, secondNumber);
+            let result = operate(operator, Number(firstNumber), Number(secondNumber));
             sendResultToDisplay(result);
         }
     } else {
