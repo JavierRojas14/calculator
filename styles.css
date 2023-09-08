@@ -1,80 +1,81 @@
 html {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: white;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
+    sans-serif;
+  color: white;
 }
 
 .results-visor {
-    display: flex;
-    width: 50%;
-    height: 50px;
-    width: ;
-    align-items: center;
-    justify-content: right;
+  display: flex;
+  width: 50%;
+  height: 50px;
+  width: ;
+  align-items: center;
+  justify-content: right;
 }
 
 .calculator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
 }
 
 .key-pad {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color: rgb(51, 51, 51);
-    width: 50%;
-    margin: auto;
-    align-items: center;
-    padding: 40px 0px;
-    border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(51, 51, 51);
+  width: 50%;
+  margin: auto;
+  align-items: center;
+  padding: 40px 0px;
+  border-radius: 15px;
 }
 
 .button-row {
-    display: flex;
-    justify-content: flex-start;
-    gap: 10px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
 }
 
 button {
-    width: 40px;
-    aspect-ratio: 1;
-    border-radius: 18px;
-    border: none;
-    background-color: rgb(27, 27, 27);
-    color: white;
-    font-weight: bold;
+  width: 40px;
+  aspect-ratio: 1;
+  border-radius: 18px;
+  border: none;
+  background-color: rgb(27, 27, 27);
+  color: white;
+  font-weight: bold;
 }
 
 .clear-button {
-    background-color: gray;
+  background-color: gray;
 }
 
 .one-digit-clear-button {
-    background-color: gray;
+  background-color: gray;
 }
 
 .blank-upper-button {
-    background-color: gray;
+  background-color: gray;
 }
 
 .division-button {
-    background-color: orange;
+  background-color: orange;
 }
 
 .multiply-button {
-    background-color: orange;
+  background-color: orange;
 }
 
 .sum-button {
-    background-color: orange;
+  background-color: orange;
 }
 
 .subtract-button {
-    background-color: orange;
+  background-color: orange;
 }
 
 .equals-button {
-    background-color: orange;
+  background-color: orange;
 }
