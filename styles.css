@@ -6,9 +6,6 @@ html {
 
 .results-visor {
   display: flex;
-  width: 50%;
-  height: 50px;
-  width: ;
   align-items: center;
   justify-content: right;
   font-size: 30px;
@@ -27,10 +24,9 @@ html {
   flex-direction: column;
   gap: 10px;
   background-color: rgb(51, 51, 51);
-  width: 50%;
   margin: auto;
   align-items: center;
-  padding: 40px 0px;
+  padding: 13px;
   border-radius: 15px;
 }
 
