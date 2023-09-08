@@ -13,10 +13,11 @@ html {
 
 .results-visor {
   text-align: right;
-  font-size: 30px;
-  background-color: gray;
-  height: 40px;
-  width: 50%;
+  font-size: 35px;
+  background-color: rgba(128, 128, 128, 0.192);
+  height: 70px;
+  width: 40%;
+  border-radius: 15px;
 }
 
 .key-pad {
@@ -24,7 +25,7 @@ html {
   flex-direction: column;
   gap: 10px;
   background-color: rgb(51, 51, 51);
-  width: 50%;
+  width: 40%;
   align-items: center;
   padding: 13px 0px;
   border-radius: 15px;
