@@ -19,6 +19,7 @@ function divide(firstNumber, secondNumber) {
 }
 
 function operate(operator, firstNumber, secondNumber) {
+  console.log(operator, firstNumber, secondNumber);
   let result = "";
   if (operator === "+") {
     result = add(firstNumber, secondNumber);
@@ -86,6 +87,10 @@ function sendValueToDisplay(characterOfButton) {
   // }
 }
 
+function sendResultToDisplay(result) {
+  document.querySelector(".results-visor").textContent = result;
+}
+
 function evaluateActionOfButton(event) {
   let characterOfButton = event.target.textContent;
 
@@ -107,8 +112,8 @@ function evaluateActionOfButton(event) {
     }
   } else if (characterOfButton === "=") {
     if (operation && firstNumber && secondNumber) {
-      result = operate(operation, firstNumber, secondNumber);
-      sendValueToDisplay(result);
+      let result = operate(operation, firstNumber, secondNumber);
+      sendResultToDisplay(result);
     }
   } else {
     sendValueToDisplay(characterOfButton);
