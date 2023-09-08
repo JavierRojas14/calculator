@@ -3,6 +3,16 @@ html {
     color: white;
 }
 
+.results-visor {
+    display: flex;
+    width: 50%;
+    height: 50px;
+    width: ;
+    background-color: rgb(119, 119, 119);
+    align-items: center;
+    justify-content: center;
+}
+
 .calculator {
     display: flex;
     flex-direction: column;
@@ -31,27 +41,39 @@ html {
 button {
     width: 40px;
     aspect-ratio: 1;
-    border-radius: 4px;
+    border-radius: 18px;
     border: none;
     background-color: rgb(27, 27, 27);
     color: white;
     font-weight: bold;
 }
 
-.division-button {
+.clear-button {
     background-color: gray;
+}
+
+.one-digit-clear-button {
+    background-color: gray;
+}
+
+.blank-upper-button {
+    background-color: gray;
+}
+
+.division-button {
+    background-color: orange;
 }
 
 .multiply-button {
-    background-color: gray;
+    background-color: orange;
 }
 
 .sum-button {
-    background-color: gray;
+    background-color: orange;
 }
 
 .subtract-button {
-    background-color: gray;
+    background-color: orange;
 }
 
 .equals-button {
