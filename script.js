@@ -64,27 +64,8 @@ function retrieveElementsOfCurrentOperation() {
   return elementsOfOperation;
 }
 
-function sendValueToDisplay(characterOfButton) {
+function addValueToDisplay(characterOfButton) {
   document.querySelector(".results-visor").textContent += characterOfButton;
-  // let currentElementsInVisor = retrieveElementsOfCurrentOperation();
-  // let operation = currentElementsInVisor[0];
-  // let firstNumber = currentElementsInVisor[1];
-  // let secondNumber = currentElementsInVisor[2];
-
-  // // If the visor is empty, and the button pressed is an operator, then don't send.
-  // console.log(operation, firstNumber, secondNumber);
-  // if (
-  //   operation === "" &&
-  //   firstNumber === null &&
-  //   secondNumber === null &&
-  //   OPERATORS.includes(characterOfButton)
-  // ) {
-  //   //pass
-  // } else if (operation && OPERATORS.includes(characterOfButton)) {
-  //   //pass
-  // } else {
-  //   document.querySelector(".results-visor").textContent += characterOfButton;
-  // }
 }
 
 function changeCurrentOperator(operator) {
@@ -96,6 +77,14 @@ function changeCurrentOperator(operator) {
 
 function sendResultToDisplay(result) {
   document.querySelector(".results-visor").textContent = result;
+}
+
+function deleteOneCharacterOfVisor() {
+  let currentExpressionInVisor = document.querySelector(".results-visor").textContent;
+  if (currentExpressionInVisor) {
+    let minusOneCharacter = currentExpressionInVisor.slice(0, -1);
+    document.querySelector(".results-visor").textContent = minusOneCharacter;
+  }
 }
 
 function evaluateActionOfButton(event) {
@@ -112,7 +101,7 @@ function evaluateActionOfButton(event) {
   else if (OPERATORS.includes(characterOfButton)) {
     // If there is only one number
     if (!operator && firstNumber && !secondNumber) {
-      sendValueToDisplay(characterOfButton);
+      addValueToDisplay(characterOfButton);
     } // If there is a number and a operator
     else if (operator && firstNumber && !secondNumber) {
       changeCurrentOperator(characterOfButton);
@@ -124,7 +113,7 @@ function evaluateActionOfButton(event) {
       } else {
         let result = operate(operator, Number(firstNumber), Number(secondNumber));
         sendResultToDisplay(result);
-        sendValueToDisplay(characterOfButton);
+        addValueToDisplay(characterOfButton);
       }
     }
   } else if (characterOfButton === "=") {
@@ -137,8 +126,10 @@ function evaluateActionOfButton(event) {
         sendResultToDisplay(result);
       }
     }
+  } else if (characterOfButton === "<=") {
+    deleteOneCharacterOfVisor();
   } else {
-    sendValueToDisplay(characterOfButton);
+    addValueToDisplay(characterOfButton);
   }
 }
 
