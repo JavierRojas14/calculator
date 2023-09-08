@@ -118,14 +118,24 @@ function evaluateActionOfButton(event) {
       changeCurrentOperator(characterOfButton);
     } // If there is two numbers and a operator
     else if (operator && firstNumber && secondNumber) {
-      let result = operate(operator, Number(firstNumber), Number(secondNumber));
-      sendResultToDisplay(result);
-      sendValueToDisplay(characterOfButton);
+      if (operator === "/" && Number(secondNumber) === 0) {
+        alert("Sneaky sneaky!! You're trying to divide by 0, and that is forbidden!");
+        sendResultToDisplay(firstNumber);
+      } else {
+        let result = operate(operator, Number(firstNumber), Number(secondNumber));
+        sendResultToDisplay(result);
+        sendValueToDisplay(characterOfButton);
+      }
     }
   } else if (characterOfButton === "=") {
     if (operator && firstNumber && secondNumber) {
-      let result = operate(operator, Number(firstNumber), Number(secondNumber));
-      sendResultToDisplay(result);
+      if (operator === "/" && Number(secondNumber) === 0) {
+        alert("Sneaky sneaky!! You're trying to divide by 0, and that is forbidden!");
+        sendResultToDisplay(firstNumber);
+      } else {
+        let result = operate(operator, Number(firstNumber), Number(secondNumber));
+        sendResultToDisplay(result);
+      }
     }
   } else {
     sendValueToDisplay(characterOfButton);
